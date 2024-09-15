@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://baisc8wbjssnu"]
+
+[ext_resource type="Script" path="res://Scenes/Sperm.gd" id="1_bclji"]
+[ext_resource type="Script" path="res://Scenes/being_born.gd" id="1_tcgd0"]
+[ext_resource type="Script" path="res://Scenes/Ground.gd" id="4_dq3yh"]
+[ext_resource type="Texture2D" uid="uid://c84cepciieg6u" path="res://Assets/Sperm.png" id="5_q7mw2"]
+[ext_resource type="PackedScene" uid="uid://cqyrf3ww5vydf" path="res://Scenes/pipe.tscn" id="7_5ba7y"]
+[ext_resource type="Texture2D" uid="uid://cr4gmnrqj5sj6" path="res://Assets/Fleshy walls.png" id="7_rhkve"]
+[ext_resource type="PackedScene" uid="uid://cmp150wsofin7" path="res://Scenes/game_over.tscn" id="8_yaqgp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tcrht"]
+specular_color = Color(0.322086, 7.01987e-05, 0.322084, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2lnm"]
+radius = 6.41207
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_in6ip"]
+size = Vector2(2514, 47.9996)
+
+[node name="BeingBorn" type="Node2D"]
+script = ExtResource("1_tcgd0")
+pipe_scene = ExtResource("7_5ba7y")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.243687, 4.00328e-05, 0.243685, 1)
+position = Vector2(566, 328.5)
+scale = Vector2(1184, 677)
+texture = SubResource("CanvasTexture_tcrht")
+
+[node name="Sperm" type="CharacterBody2D" parent="."]
+position = Vector2(70, 298)
+script = ExtResource("1_bclji")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sperm"]
+position = Vector2(-27.75, 10.375)
+scale = Vector2(0.256836, 0.196777)
+texture = ExtResource("5_q7mw2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sperm"]
+scale = Vector2(2.98051, 2.895)
+shape = SubResource("CircleShape2D_n2lnm")
+
+[node name="Ground" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(268, -12)
+script = ExtResource("4_dq3yh")
+
+[node name="Ground" type="Sprite2D" parent="Ground"]
+position = Vector2(2637, 600.25)
+scale = Vector2(2.98047, 0.262695)
+texture = ExtResource("7_rhkve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(988, 636)
+shape = SubResource("RectangleShape2D_in6ip")
+
+[node name="Ceiling" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(268, -12)
+rotation = -3.14159
+script = ExtResource("4_dq3yh")
+
+[node name="Ceiling" type="Sprite2D" parent="Ceiling"]
+position = Vector2(-1329, -78)
+scale = Vector2(2.98047, 0.262695)
+texture = ExtResource("7_rhkve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(-277, -39.9997)
+shape = SubResource("RectangleShape2D_in6ip")
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 1153.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Time Until Miracle: 100"
+horizontal_alignment = 1
+
+[node name="GameOver" parent="." instance=ExtResource("8_yaqgp")]
+
+[connection signal="body_entered" from="Ground" to="." method="_on_ground_body_entered"]
+[connection signal="body_entered" from="Ceiling" to="." method="_on_ground_body_entered"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]

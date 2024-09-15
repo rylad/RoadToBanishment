@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpk22i5b0mia1"]
+
+[ext_resource type="Script" path="res://Scripts/GameState.gd" id="1_kgluy"]
+[ext_resource type="Script" path="res://game.gd" id="1_o3vwt"]
+[ext_resource type="PackedScene" uid="uid://baisc8wbjssnu" path="res://Scenes/being_born.tscn" id="2_qemkq"]
+[ext_resource type="Script" path="res://Player.gd" id="4_1tchn"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "strengthValueLabel", "intelligenceValueLabel", "charismaValueLabel", "hungerValueLabel", "thirstValueLabel", "socialValueLabel", "comfortValueLabel")]
+script = ExtResource("1_o3vwt")
+TheBeginning = ExtResource("2_qemkq")
+player = NodePath("Player")
+strengthValueLabel = NodePath("HBoxContainer/Stats/StrengthValue")
+intelligenceValueLabel = NodePath("HBoxContainer/Stats/IntelligenceValue")
+charismaValueLabel = NodePath("HBoxContainer/Stats/CharismaValue")
+hungerValueLabel = NodePath("HBoxContainer2/Vitals/HungerValue")
+thirstValueLabel = NodePath("HBoxContainer2/Vitals/ThirstValue")
+socialValueLabel = NodePath("HBoxContainer2/Vitals/SocialValue")
+comfortValueLabel = NodePath("HBoxContainer2/Vitals/ComfortValue")
+
+[node name="Develop" type="Button" parent="." node_paths=PackedStringArray("player")]
+offset_left = 553.0
+offset_top = 300.0
+offset_right = 624.0
+offset_bottom = 331.0
+text = "Develop"
+script = ExtResource("1_kgluy")
+label_value = 9
+player = NodePath("../Player")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 566.0
+offset_top = 71.0
+offset_right = 606.0
+offset_bottom = 94.0
+size_flags_horizontal = 4
+text = "0"
+
+[node name="Actions Storage" type="VBoxContainer" parent="."]
+offset_left = 1.0
+offset_right = 251.0
+offset_bottom = 649.0
+
+[node name="BeingBorn" parent="." instance=ExtResource("2_qemkq")]
+visible = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4_1tchn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 924.0
+offset_right = 1150.0
+offset_bottom = 308.0
+
+[node name="Stats Names" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="StatsName" type="Label" parent="HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Stats"
+
+[node name="StrengthName" type="Label" parent="HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Strength"
+
+[node name="IntelligenceName" type="Label" parent="HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Intelligence"
+
+[node name="CharismaName" type="Label" parent="HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Charisma"
+
+[node name="Stats" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="StatsValue" type="Label" parent="HBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="StrengthValue" type="Label" parent="HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999"
+
+[node name="IntelligenceValue" type="Label" parent="HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999"
+
+[node name="CharismaValue" type="Label" parent="HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = 927.0
+offset_top = 333.0
+offset_right = 1152.0
+offset_bottom = 646.0
+
+[node name="Vitals Names" type="VBoxContainer" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Vitals" type="Label" parent="HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Vitals"
+
+[node name="Hunger" type="Label" parent="HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Hunger"
+
+[node name="Thirst" type="Label" parent="HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Thirst"
+
+[node name="Social" type="Label" parent="HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Social"
+
+[node name="Comfort" type="Label" parent="HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Comfort"
+
+[node name="Vitals" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="Vitals" type="Label" parent="HBoxContainer2/Vitals"]
+layout_mode = 2
+
+[node name="HungerValue" type="Label" parent="HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="ThirstValue" type="Label" parent="HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="SocialValue" type="Label" parent="HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="ComfortValue" type="Label" parent="HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[connection signal="pressed" from="Develop" to="Develop" method="_on_pressed"]

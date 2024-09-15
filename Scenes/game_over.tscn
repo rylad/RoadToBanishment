@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmp150wsofin7"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_xi211"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_xi211")
+
+[node name="Restart" type="Button" parent="."]
+visible = false
+offset_left = 460.0
+offset_top = 302.0
+offset_right = 678.0
+offset_bottom = 333.0
+text = "You were not the lucky one"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

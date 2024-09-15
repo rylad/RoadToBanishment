@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://baisc8wbjssnu"]
+
+[ext_resource type="Script" path="res://Scenes/Sperm.gd" id="1_bclji"]
+[ext_resource type="Script" path="res://Scenes/being_born.gd" id="1_tcgd0"]
+[ext_resource type="Texture2D" uid="uid://dgcng8vbsppb0" path="res://icon.svg" id="2_ee27u"]
+[ext_resource type="Texture2D" uid="uid://dagogci3w1vpg" path="res://Textures/Metal_09-512x512.png" id="3_j4um2"]
+[ext_resource type="Script" path="res://Scenes/Ground.gd" id="4_dq3yh"]
+[ext_resource type="Texture2D" uid="uid://dgiwso26f4jfl" path="res://Textures/Wood_15-512x512.png" id="5_4r206"]
+[ext_resource type="PackedScene" uid="uid://cqyrf3ww5vydf" path="res://Scenes/pipe.tscn" id="7_5ba7y"]
+[ext_resource type="PackedScene" uid="uid://cmp150wsofin7" path="res://Scenes/game_over.tscn" id="8_yaqgp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2lnm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_in6ip"]
+size = Vector2(2514, 68)
+
+[node name="BeingBorn" type="Node2D"]
+script = ExtResource("1_tcgd0")
+pipe_scene = ExtResource("7_5ba7y")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(583, 277)
+scale = Vector2(2.92857, 2.41111)
+texture = ExtResource("3_j4um2")
+
+[node name="Sperm" type="CharacterBody2D" parent="."]
+position = Vector2(70, 298)
+script = ExtResource("1_bclji")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sperm"]
+scale = Vector2(0.445313, 0.474609)
+texture = ExtResource("2_ee27u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sperm"]
+scale = Vector2(2.98051, 2.895)
+shape = SubResource("CircleShape2D_n2lnm")
+
+[node name="Ground" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(268, -12)
+script = ExtResource("4_dq3yh")
+
+[node name="Ground" type="Sprite2D" parent="Ground"]
+position = Vector2(988, 633.5)
+scale = Vector2(4.91406, 0.130859)
+texture = ExtResource("5_4r206")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(988, 633)
+shape = SubResource("RectangleShape2D_in6ip")
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 1153.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Time Until Miracle: 100"
+horizontal_alignment = 1
+
+[node name="GameOver" parent="." instance=ExtResource("8_yaqgp")]
+
+[connection signal="body_entered" from="Ground" to="Ground" method="_on_body_entered"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]

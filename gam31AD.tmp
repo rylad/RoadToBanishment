@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpk22i5b0mia1"]
+
+[ext_resource type="Script" path="res://Scripts/GameState.gd" id="1_kgluy"]
+[ext_resource type="Script" path="res://game.gd" id="1_o3vwt"]
+[ext_resource type="PackedScene" uid="uid://baisc8wbjssnu" path="res://Scenes/being_born.tscn" id="2_qemkq"]
+[ext_resource type="Script" path="res://Player.gd" id="4_1tchn"]
+[ext_resource type="Script" path="res://Scripts/Childhood.gd" id="5_vji72"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("Childhood")]
+script = ExtResource("1_o3vwt")
+TheBeginning = ExtResource("2_qemkq")
+Childhood = NodePath("Childhood")
+
+[node name="Develop" type="Button" parent="." node_paths=PackedStringArray("Childhood")]
+offset_left = 553.0
+offset_top = 300.0
+offset_right = 624.0
+offset_bottom = 331.0
+text = "Develop"
+script = ExtResource("1_kgluy")
+Childhood = NodePath("../Childhood")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 566.0
+offset_top = 71.0
+offset_right = 606.0
+offset_bottom = 94.0
+size_flags_horizontal = 4
+text = "0"
+
+[node name="Actions Storage" type="VBoxContainer" parent="."]
+offset_left = 1.0
+offset_right = 251.0
+offset_bottom = 649.0
+
+[node name="Stats Storage" type="VBoxContainer" parent="."]
+offset_left = 906.0
+offset_right = 1156.0
+offset_bottom = 325.0
+
+[node name="Vitals2" type="Label" parent="Stats Storage"]
+layout_mode = 2
+text = "Stats"
+
+[node name="Vitals Storage" type="VBoxContainer" parent="."]
+offset_left = 900.0
+offset_top = 325.0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="Vitals" type="Label" parent="Vitals Storage"]
+layout_mode = 2
+text = "Vitals"
+
+[node name="BeingBorn" parent="." instance=ExtResource("2_qemkq")]
+visible = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4_1tchn")
+
+[node name="Childhood" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_vji72")
+player = NodePath("../Player")
+
+[connection signal="pressed" from="Develop" to="Develop" method="_on_pressed"]
