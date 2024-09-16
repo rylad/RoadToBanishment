@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpk22i5b0mia1"]
+[gd_scene load_steps=8 format=3 uid="uid://dpk22i5b0mia1"]
 
 [ext_resource type="Script" path="res://Scripts/Develop.gd" id="1_kgluy"]
 [ext_resource type="Script" path="res://game.gd" id="1_o3vwt"]
 [ext_resource type="PackedScene" uid="uid://baisc8wbjssnu" path="res://Scenes/being_born.tscn" id="2_qemkq"]
+[ext_resource type="PackedScene" uid="uid://kccv4kmiajlj" path="res://Scenes/ButtonWithProgressBar.tscn" id="3_fdimx"]
 [ext_resource type="Script" path="res://Player.gd" id="4_1tchn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0xg6"]
@@ -21,6 +22,7 @@ hungerValueLabel = NodePath("Vitals Panel/HBoxContainer2/Vitals/HungerValue")
 thirstValueLabel = NodePath("Vitals Panel/HBoxContainer2/Vitals/ThirstValue")
 socialValueLabel = NodePath("Vitals Panel/HBoxContainer2/Vitals/SocialValue")
 comfortValueLabel = NodePath("Vitals Panel/HBoxContainer2/Vitals/ComfortValue")
+limitedEventButton = ExtResource("3_fdimx")
 
 [node name="Develop" type="Button" parent="." node_paths=PackedStringArray("player")]
 offset_left = 553.0

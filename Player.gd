@@ -42,8 +42,7 @@ func get_vitals():
 var Childhood = {
 	"Try to Crawl" : try_to_crawl, 
 	"Cry": cry, 
-	"Poop": poop,
-	"Summon Mom": summon_Mom
+	"Poop": poop
 	}
 
 func try_to_crawl():
@@ -72,3 +71,11 @@ func poop():
 func summon_Mom(name):
 	print("Summoning Mom")
 	SignalBus.summonMom.emit(name)
+
+func summon_mom_use():
+	if Hunger <= 80:
+		Hunger += 20
+	elif Hunger <= 99:
+		Hunger +=1
+	else:
+		print("Full")

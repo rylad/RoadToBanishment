@@ -10,6 +10,11 @@ func _on_pressed():
 	label_value += 1
 	label.text = str(label_value)
 	
+	player.Hunger -= 10
+	player.Thirst -= 10
+	player.Social -= 10
+	player.Comfort -= 10
+	
 	"""
 	if label_value == 5:
 		SignalBus.update.emit("Dream")
@@ -22,6 +27,8 @@ func _on_pressed():
 		print("We are in the %s phase of life." %[generation])
 		SignalBus.update.emit("Develop")
 		SignalBus.generationChange.emit(generation)
-
+	
+	if label_value == 15:
+		print("time to reset")
 	
 	return generation

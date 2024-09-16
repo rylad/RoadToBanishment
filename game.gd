@@ -17,7 +17,7 @@ extends Node2D
 @export var socialValueLabel: Label
 @export var comfortValueLabel: Label
 
-
+@export var limitedEventButton: PackedScene
 
 
 func _ready():
@@ -41,6 +41,17 @@ func add_new_button(name, generation, location):
 	var new_Button = new_button(name)
 	new_Button.pressed.connect(player.Childhood[name])
 	location.add_child(new_Button)
+
+func add_limited_event_button(name, starting_value, cost, callable):
+	##TODO - Remove Bug, if you go under then over then under, it overwrites (adds a second mom)
+	var new_limited_event = limitedEventButton.instantiate()
+	new_limited_event.button_name_label.text = name
+	new_limited_event.starting_value = starting_value
+	new_limited_event.click_cost = cost
+	new_limited_event.button.pressed.connect(callable)
+	TimedButtonStorage.add_child(new_limited_event)
+
+	
 
 func become_born():
 	$BeingBorn.show()
@@ -78,5 +89,4 @@ func update_ui():
 	comfortValueLabel.text = str(player.Comfort)
 
 func limited_event(name):
-	print("Summoning Mom")
-	add_new_button(name, generation, TimedButtonStorage)
+	add_limited_event_button(name, 100, 10, player.summon_mom_use)
