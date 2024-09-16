@@ -18,8 +18,10 @@ func _on_pressed():
 	
 	if label_value == 10:
 		print(label_value)
-		generation = Childhood.new()
+		generation = "Childhood"
+		print("We are in the %s phase of life." %[generation])
 		SignalBus.update.emit("Develop")
 		SignalBus.generationChange.emit(generation)
+
 	
 	return generation

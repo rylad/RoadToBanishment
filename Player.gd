@@ -8,7 +8,7 @@ var Intelligence = 2
 var Charisma = 10
 
 ##Vitals
-var Hunger = 100.0
+var Hunger = 30.0
 var Thirst = 100.0
 var Social = 100.0
 var Comfort = 100.0
@@ -36,3 +36,39 @@ func get_stats():
 
 func get_vitals():
 	return[Hunger, Thirst, Social, Comfort]
+
+## 0.1 - Childhood - functions
+
+var Childhood = {
+	"Try to Crawl" : try_to_crawl, 
+	"Cry": cry, 
+	"Poop": poop,
+	"Summon Mom": summon_Mom
+	}
+
+func try_to_crawl():
+	if Strength <= 10:
+		print(Strength)
+		print(Player)
+		Strength += 1
+	else:
+		Strength += .1
+		
+	Hunger -= 1
+	Thirst -= .5
+	
+	if Hunger <= 20:
+		summon_Mom("Summon Mom")
+		
+func cry():
+	Hunger += 5
+	Thirst += 2
+	Comfort -= 1
+	
+
+func poop():
+	Comfort = 100.0
+
+func summon_Mom(name):
+	print("Summoning Mom")
+	SignalBus.summonMom.emit(name)

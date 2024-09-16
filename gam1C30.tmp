@@ -1,14 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpk22i5b0mia1"]
+[gd_scene load_steps=5 format=3 uid="uid://dpk22i5b0mia1"]
 
-[ext_resource type="Script" path="res://Scripts/Develop.gd" id="1_kgluy"]
+[ext_resource type="Script" path="res://Scripts/GameState.gd" id="1_kgluy"]
 [ext_resource type="Script" path="res://game.gd" id="1_o3vwt"]
 [ext_resource type="PackedScene" uid="uid://baisc8wbjssnu" path="res://Scenes/being_born.tscn" id="2_qemkq"]
 [ext_resource type="Script" path="res://Player.gd" id="4_1tchn"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0xg6"]
-border_color = Color(0.85958, 0.545326, 0.780122, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf6nu"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player", "strengthValueLabel", "intelligenceValueLabel", "charismaValueLabel", "hungerValueLabel", "thirstValueLabel", "socialValueLabel", "comfortValueLabel")]
 script = ExtResource("1_o3vwt")
@@ -40,16 +35,10 @@ offset_bottom = 94.0
 size_flags_horizontal = 4
 text = "0"
 
-[node name="Actions Panel" type="Panel" parent="."]
+[node name="Actions Storage" type="VBoxContainer" parent="."]
 offset_left = 1.0
 offset_right = 251.0
-offset_bottom = 595.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_q0xg6")
-
-[node name="Actions Storage" type="VBoxContainer" parent="Actions Panel"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 594.0
+offset_bottom = 649.0
 
 [node name="BeingBorn" parent="." instance=ExtResource("2_qemkq")]
 visible = false
@@ -58,13 +47,12 @@ visible = false
 script = ExtResource("4_1tchn")
 
 [node name="Vitals Panel" type="Panel" parent="."]
-offset_left = 919.0
-offset_top = 309.0
-offset_right = 1150.0
-offset_bottom = 597.0
+offset_left = 922.0
+offset_top = 327.0
+offset_right = 1151.0
+offset_bottom = 649.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Vitals Panel"]
-layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0
 offset_right = 230.0
@@ -122,7 +110,6 @@ offset_right = 1150.0
 offset_bottom = 306.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Stats Panel"]
-layout_mode = 0
 offset_left = 5.0
 offset_right = 231.0
 offset_bottom = 308.0
@@ -165,59 +152,5 @@ text = "9999"
 layout_mode = 2
 text = "9999
 "
-
-[node name="UI Tabs Panel" type="Panel" parent="."]
-offset_top = 597.0
-offset_right = 1151.0
-offset_bottom = 648.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tf6nu")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI Tabs Panel"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 50.0
-
-[node name="Button" type="Button" parent="UI Tabs Panel/HBoxContainer"]
-layout_mode = 2
-text = "UI PH 1"
-
-[node name="Button2" type="Button" parent="UI Tabs Panel/HBoxContainer"]
-layout_mode = 2
-text = "UI PH 1"
-
-[node name="Button3" type="Button" parent="UI Tabs Panel/HBoxContainer"]
-layout_mode = 2
-text = "UI PH 1"
-
-[node name="Button4" type="Button" parent="UI Tabs Panel/HBoxContainer"]
-layout_mode = 2
-text = "UI PH 1"
-
-[node name="Button5" type="Button" parent="UI Tabs Panel/HBoxContainer"]
-layout_mode = 2
-text = "UI PH 1"
-
-[node name="Timed Events Panel" type="Panel" parent="."]
-offset_left = 257.0
-offset_top = 385.0
-offset_right = 916.0
-offset_bottom = 588.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Timed Events Panel"]
-layout_mode = 0
-offset_right = 659.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Timed Events Panel/HBoxContainer"]
-layout_mode = 2
-text = "LIMITED EVENTS SHOULD APPEAR HERE"
-horizontal_alignment = 1
-
-[node name="TimedButtonStorage" type="VBoxContainer" parent="Timed Events Panel"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 41.0
-offset_right = 657.0
-offset_bottom = 199.0
 
 [connection signal="pressed" from="Develop" to="Develop" method="_on_pressed"]

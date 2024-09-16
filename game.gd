@@ -1,8 +1,11 @@
 extends Node2D
 
-@onready var ButtonStorage = $"Actions Storage"
+@onready var ButtonStorage = $"Actions Panel/Actions Storage"
+@onready var TimedButtonStorage = $"Timed Events Panel/TimedButtonStorage"
 @onready var StatsStorage = $"Stats Storage"
 @onready var VitalStorage =  $"Vitals Storage"
+@onready var generation = ""
+
 @export var TheBeginning : PackedScene
 @export var player:CharacterBody2D
 
@@ -16,30 +19,28 @@ extends Node2D
 
 
 
+
 func _ready():
 	SignalBus.generationChange.connect(generation_change)
 	SignalBus.update.connect(update_button)
 	SignalBus.becomeBorn.connect(become_born)
 	SignalBus.birth.connect(birth)
+	SignalBus.summonMom.connect(limited_event)
 	$Develop.text = "Thrust"
-	print(player)
 	
 func _physics_process(delta):
 	update_ui()
 
 func generation_change(generation):
-	for each in generation.stageActions:
-		update_story(each, generation)
+	##TODO - Remove this Childhood Ref, why isnt player.generation passing / working correctly?
+	print("The following was passed: " + generation)
+	for each in player.Childhood:
+		add_new_button(each, generation, ButtonStorage)
 
-
-func update_story(name, generation):
-	add_new_button(name, generation)
-
-func add_new_button(name, generation):
+func add_new_button(name, generation, location):
 	var new_Button = new_button(name)
-	print(generation.stageActions[name])
-	new_Button.pressed.connect(generation.stageActions[name])
-	ButtonStorage.add_child(new_Button)
+	new_Button.pressed.connect(player.Childhood[name])
+	location.add_child(new_Button)
 
 func become_born():
 	$BeingBorn.show()
@@ -75,3 +76,7 @@ func update_ui():
 	thirstValueLabel.text = str(player.Thirst)
 	socialValueLabel.text = str(player.Social)
 	comfortValueLabel.text = str(player.Comfort)
+
+func limited_event(name):
+	print("Summoning Mom")
+	add_new_button(name, generation, TimedButtonStorage)

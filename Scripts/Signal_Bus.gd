@@ -5,3 +5,8 @@ signal update(name)
 signal becomeBorn()
 signal birth()
 signal generationChange(name)
+
+
+
+#Event Summons
+signal summonMom()

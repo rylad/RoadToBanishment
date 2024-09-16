@@ -1,5 +1,7 @@
 extends Player
 
+##DEPRECATED
+"""
 class_name Childhood
 
 
@@ -11,6 +13,8 @@ var stageActions = {
 
 func try_to_crawl():
 	if Strength <= 10:
+		print(Strength)
+		print(Player)
 		Strength += 1
 	else:
 		Strength += .1
@@ -26,3 +30,5 @@ func cry():
 
 func poop():
 	Comfort = 100.0
+
+"""

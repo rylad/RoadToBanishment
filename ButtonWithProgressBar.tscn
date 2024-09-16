@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://kccv4kmiajlj"]
+
+[ext_resource type="Texture2D" uid="uid://bkgi0uc8aogrf" path="res://Assets/PlaceHolderButton.png" id="1_rjf30"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 216.0
+offset_bottom = 216.0
+icon = ExtResource("1_rjf30")
