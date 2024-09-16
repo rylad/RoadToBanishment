@@ -1,10 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://kccv4kmiajlj"]
+[gd_scene load_steps=3 format=3 uid="uid://kccv4kmiajlj"]
 
+[ext_resource type="Script" path="res://button_with_progress_bar.gd" id="1_o5qi5"]
 [ext_resource type="Texture2D" uid="uid://bkgi0uc8aogrf" path="res://Assets/PlaceHolderButton.png" id="1_rjf30"]
 
-[node name="Node2D" type="Node2D"]
+[node name="ButtonWithProgress" type="Node2D" node_paths=PackedStringArray("button_name_label", "progress")]
+script = ExtResource("1_o5qi5")
+button_name_label = NodePath("Button/Label")
+progress = NodePath("ProgressBar")
 
 [node name="Button" type="Button" parent="."]
 offset_right = 216.0
 offset_bottom = 216.0
 icon = ExtResource("1_rjf30")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 81.0
+offset_right = 166.0
+offset_bottom = 127.0
+text = "PLACEHOLDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 36.0
+offset_top = 141.0
+offset_right = 174.0
+offset_bottom = 168.0
+
+[connection signal="pressed" from="Button" to="." method="_on_click"]
