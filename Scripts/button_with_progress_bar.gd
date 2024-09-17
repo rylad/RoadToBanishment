@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 @export var button_name_label: Label

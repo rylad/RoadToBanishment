@@ -12,6 +12,7 @@ var Hunger = 30.0
 var Thirst = 100.0
 var Social = 100.0
 var Comfort = 100.0
+var Cleanliness = 100.0
 
 ##Misc
 var Money = 0.00
@@ -67,10 +68,19 @@ func cry():
 
 func poop():
 	Comfort = 100.0
+	Cleanliness -= 30
+	
+	if Cleanliness <= 40:
+		summon_Dad("Summon Dad")
+
 
 func summon_Mom(name):
 	print("Summoning Mom")
 	SignalBus.summonMom.emit(name)
+
+func summon_Dad(name):
+	print("Summoning Dad")
+	SignalBus.summonDad.emit(name)
 
 func summon_mom_use():
 	if Hunger <= 80:
@@ -79,3 +89,7 @@ func summon_mom_use():
 		Hunger +=1
 	else:
 		print("Full")
+
+func summon_dad_use():
+	if Cleanliness < 100:
+		Cleanliness = 100

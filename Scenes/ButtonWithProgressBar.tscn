@@ -3,19 +3,32 @@
 [ext_resource type="Script" path="res://Scripts/button_with_progress_bar.gd" id="1_7r1pk"]
 [ext_resource type="Texture2D" uid="uid://haqsxoir7nlb" path="res://Assets/PlaceHolderButton-export.png" id="2_xqor2"]
 
-[node name="ButtonWithProgress" type="Node2D" node_paths=PackedStringArray("button_name_label", "progress", "button")]
+[node name="ButtonWithProgressBar" type="Control" node_paths=PackedStringArray("button_name_label", "progress")]
+layout_mode = 3
+anchor_right = 0.157986
+anchor_bottom = 0.162037
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_7r1pk")
-button_name_label = NodePath("Button/Label")
-progress = NodePath("ProgressBar")
-button = NodePath("Button")
+button_name_label = NodePath("Panel/Button/Label")
+progress = NodePath("Panel/ProgressBar")
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Panel" type="Panel" parent="."]
+offset_right = 181.0
+offset_bottom = 105.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel"]
 offset_right = 592.0
 offset_bottom = 236.0
 scale = Vector2(0.3, 0.3)
 icon = ExtResource("2_xqor2")
 
-[node name="Label" type="Label" parent="Button"]
+[node name="Label" type="Label" parent="Panel/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,10 +44,10 @@ text = "PLACEHOLDER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 21.0
+[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+offset_left = 5.0
 offset_top = 72.0
-offset_right = 159.0
+offset_right = 177.0
 offset_bottom = 99.0
 
-[connection signal="pressed" from="Button" to="." method="_on_click"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_click"]

@@ -10,3 +10,4 @@ signal generationChange(name)
 
 #Event Summons
 signal summonMom()
+signal summonDad()

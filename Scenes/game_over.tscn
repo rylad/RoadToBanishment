@@ -6,7 +6,6 @@
 script = ExtResource("1_xi211")
 
 [node name="Restart" type="Button" parent="."]
-visible = false
 offset_left = 460.0
 offset_top = 302.0
 offset_right = 678.0

@@ -1,14 +1,17 @@
 extends Node2D
 
-@onready var ButtonStorage = $"Actions Panel/Actions Storage"
-@onready var TimedButtonStorage = $"Timed Events Panel/TimedButtonStorage"
-@onready var StatsStorage = $"Stats Storage"
-@onready var VitalStorage =  $"Vitals Storage"
+@export_category("UI Containers")
+@export var MainUI:CanvasGroup
+@export var ButtonStorage:VBoxContainer
+@export var TimedButtonStorage:HBoxContainer
+@export var StatsStorage:VBoxContainer
+@export var VitalStorage:VBoxContainer
 @onready var generation = ""
 
 @export var TheBeginning : PackedScene
 @export var player:CharacterBody2D
 
+@export_category("Stat Labels")
 @export var strengthValueLabel: Label
 @export var intelligenceValueLabel: Label
 @export var charismaValueLabel: Label
@@ -16,8 +19,12 @@ extends Node2D
 @export var thirstValueLabel: Label
 @export var socialValueLabel: Label
 @export var comfortValueLabel: Label
+@export var cleanlinessValueLabel: Label
 
 @export var limitedEventButton: PackedScene
+
+@export_category("Misc")
+@export var mainButton:Button
 
 
 func _ready():
@@ -26,7 +33,9 @@ func _ready():
 	SignalBus.becomeBorn.connect(become_born)
 	SignalBus.birth.connect(birth)
 	SignalBus.summonMom.connect(limited_event)
-	$Develop.text = "Thrust"
+	SignalBus.summonDad.connect(limited_event)
+	
+	mainButton.text = "Thrust"
 	
 func _physics_process(delta):
 	update_ui()
@@ -54,18 +63,15 @@ func add_limited_event_button(name, starting_value, cost, callable):
 	
 
 func become_born():
-	$BeingBorn.show()
 	hide_main()
+	$BeingBorn.show()
+
 	
 func hide_main():
-	$Develop.hide()
-	$Label.hide()
-	ButtonStorage.hide()
+	MainUI.hide()
 	
 func show_main():
-	$Develop.show()
-	$Label.show()
-	ButtonStorage.show()
+	MainUI.show()
 	
 func new_button(name):
 	var created_button = Button.new()
@@ -73,7 +79,7 @@ func new_button(name):
 	return created_button
 
 func update_button(name):
-	$Develop.text = name
+	mainButton.text = name
 
 func birth():
 	$BeingBorn.queue_free()
@@ -87,6 +93,11 @@ func update_ui():
 	thirstValueLabel.text = str(player.Thirst)
 	socialValueLabel.text = str(player.Social)
 	comfortValueLabel.text = str(player.Comfort)
+	cleanlinessValueLabel.text = str(player.Cleanliness)
 
 func limited_event(name):
-	add_limited_event_button(name, 100, 10, player.summon_mom_use)
+	print(name)
+	if name == "Summon Mom":
+		add_limited_event_button(name, 100, 10, player.summon_mom_use)
+	elif name == "Summon Dad":
+		add_limited_event_button(name, 100, 50, player.summon_dad_use)
