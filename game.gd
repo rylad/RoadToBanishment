@@ -25,7 +25,7 @@ extends Node2D
 
 @export_category("Misc")
 @export var mainButton:Button
-
+@export var generationPower:float
 
 func _ready():
 	SignalBus.generationChange.connect(generation_change)

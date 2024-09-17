@@ -15,10 +15,11 @@ func _on_pressed():
 	player.Social -= 10
 	player.Comfort -= 10
 	
+	"""
 	if label_value == 5:
 		SignalBus.update.emit("Dream")
 		SignalBus.becomeBorn.emit()
-
+	"""
 	
 	if label_value == 10:
 		print(label_value)

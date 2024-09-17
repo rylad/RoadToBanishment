@@ -83,6 +83,7 @@ func summon_Dad(name):
 	SignalBus.summonDad.emit(name)
 
 func summon_mom_use():
+	Social += 20
 	if Hunger <= 80:
 		Hunger += 20
 	elif Hunger <= 99:
@@ -91,5 +92,6 @@ func summon_mom_use():
 		print("Full")
 
 func summon_dad_use():
+	Social += 20
 	if Cleanliness < 100:
 		Cleanliness = 100

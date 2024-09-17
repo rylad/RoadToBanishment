@@ -235,6 +235,7 @@ offset_bottom = 331.0
 text = "Develop"
 script = ExtResource("1_kgluy")
 label = NodePath("../../Label")
+label_value = 6
 player = NodePath("../../Player")
 
 [connection signal="pressed" from="MainUI/Develop" to="MainUI/Develop" method="_on_pressed"]

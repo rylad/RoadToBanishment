@@ -94,7 +94,6 @@ text = "Time Until Miracle: 100"
 horizontal_alignment = 1
 
 [node name="GameOver" parent="." instance=ExtResource("8_yaqgp")]
-visible = false
 
 [node name="Egg Start" type="Marker2D" parent="."]
 position = Vector2(1507, 329)
