@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://datu1leusoj3s"
-path="res://.godot/imported/Sprite-0001.aseprite-389915ddfba13ab9fca7ed24eda9dfaf.ctex"
+uid="uid://ccttvr118xxa5"
+path="res://.godot/imported/Paperdoll-placeholder.aseprite-55f7b8e97f5f717d64b5caa2f6a89c69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite-0001.aseprite"
-dest_files=["res://.godot/imported/Sprite-0001.aseprite-389915ddfba13ab9fca7ed24eda9dfaf.ctex"]
+source_file="res://Assets/Paperdoll-placeholder.aseprite"
+dest_files=["res://.godot/imported/Paperdoll-placeholder.aseprite-55f7b8e97f5f717d64b5caa2f6a89c69.ctex"]
 
 [params]
 

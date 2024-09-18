@@ -1,0 +1,166 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqoq8lb4wcikp"]
+
+[ext_resource type="Texture2D" uid="uid://ccttvr118xxa5" path="res://Assets/Paperdoll-placeholder.aseprite" id="1_gctqx"]
+
+[node name="CharacterSheet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats Names" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="StatsName" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Stats"
+
+[node name="StrengthName" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Strength"
+
+[node name="IntelligenceName" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Intelligence"
+
+[node name="CharismaName" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Charisma"
+
+[node name="Stats" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="StatsValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="StrengthValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999"
+
+[node name="IntelligenceValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999"
+
+[node name="CharismaValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999
+"
+
+[node name="PaperDoll" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/PaperDoll"]
+layout_mode = 2
+text = "Character Name: DITTO"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer/HBoxContainer/PaperDoll"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer/PaperDoll/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("1_gctqx")
+
+[node name="Vitals Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vitals Names" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Vitals" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Vitals"
+
+[node name="Hunger" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Hunger"
+
+[node name="Thirst" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Thirst"
+
+[node name="Social" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Social"
+
+[node name="Comfort" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Comfort"
+
+[node name="Cleanliness" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Cleanliness
+"
+
+[node name="Vitals" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Vitals" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+
+[node name="HungerValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="ThirstValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="SocialValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="ComfortValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="CleanlinessValue" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"

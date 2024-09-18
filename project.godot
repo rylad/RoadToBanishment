@@ -21,7 +21,7 @@ aseprite_executable_path="C:/Program Files (x86)/Steam/steamapps/common/Aseprite
 
 [autoload]
 
-SignalBus="*res://Scripts/Signal_Bus.gd"
+SignalBus="*res://Assets/Signal_Bus.gd"
 
 [editor_plugins]
 
