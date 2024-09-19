@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://bau1pdsnuv2f1"]
+
+[ext_resource type="PackedScene" uid="uid://b5gmt6duwd8ox" path="res://Scenes/Blueprints/stats.tscn" id="1_raex6"]
+
+[node name="StatsPanel" type="Control"]
+layout_mode = 3
+anchor_right = 0.785
+anchor_bottom = 0.309
+offset_right = -0.320007
+offset_bottom = -0.23201
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Stats3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
+layout_mode = 2
+size_flags_vertical = 3

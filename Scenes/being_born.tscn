@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://baisc8wbjssnu"]
 
-[ext_resource type="Script" path="res://Scenes/Sperm.gd" id="1_bclji"]
-[ext_resource type="Script" path="res://Scenes/being_born.gd" id="1_tcgd0"]
+[ext_resource type="Script" path="res://Scripts/Sperm.gd" id="1_bclji"]
+[ext_resource type="Script" path="res://Scripts/being_born.gd" id="1_tcgd0"]
 [ext_resource type="PackedScene" uid="uid://pb26xngr6bjq" path="res://Scenes/egg.tscn" id="3_myaf4"]
-[ext_resource type="Script" path="res://Scenes/Ground.gd" id="4_dq3yh"]
+[ext_resource type="Script" path="res://Scripts/Ground.gd" id="4_dq3yh"]
 [ext_resource type="Texture2D" uid="uid://c84cepciieg6u" path="res://Assets/Sperm.png" id="5_q7mw2"]
 [ext_resource type="PackedScene" uid="uid://cqyrf3ww5vydf" path="res://Scenes/pipe.tscn" id="7_5ba7y"]
 [ext_resource type="Texture2D" uid="uid://cr4gmnrqj5sj6" path="res://Assets/Fleshy walls.png" id="7_rhkve"]

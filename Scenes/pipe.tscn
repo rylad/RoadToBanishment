@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqyrf3ww5vydf"]
 
-[ext_resource type="Script" path="res://Scenes/Pipe.gd" id="1_s3xev"]
+[ext_resource type="Script" path="res://Scripts/Pipe.gd" id="1_s3xev"]
 [ext_resource type="Texture2D" uid="uid://cptmfg7nsudhh" path="res://Assets/Pillar.png" id="2_ngj71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qsif"]

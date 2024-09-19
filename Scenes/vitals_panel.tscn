@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ttcoegt78ct"]
+
+[ext_resource type="PackedScene" uid="uid://dqk8ph3wovw83" path="res://Scenes/Blueprints/vital.tscn" id="1_noleq"]
+
+[node name="VitalsPanel" type="Control"]
+layout_mode = 3
+anchor_right = 0.785
+anchor_bottom = 0.309
+offset_right = -0.320007
+offset_bottom = -0.23201
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vitals
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Vital" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Vital2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Vital3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Vital" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Vital2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Vital3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
+layout_mode = 2
+size_flags_vertical = 3

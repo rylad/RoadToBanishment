@@ -1,0 +1,255 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpk22i5b0mia1"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_vf5ql"]
+[ext_resource type="PackedScene" uid="uid://baisc8wbjssnu" path="res://Scenes/being_born.tscn" id="2_moft1"]
+[ext_resource type="PackedScene" uid="uid://kccv4kmiajlj" path="res://Scenes/ButtonWithProgressBar.tscn" id="3_6xad1"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="4_bavrt"]
+[ext_resource type="Script" path="res://Scripts/Develop.gd" id="5_at8re"]
+[ext_resource type="PackedScene" uid="uid://dqoq8lb4wcikp" path="res://Scenes/character_sheet.tscn" id="6_bf0b5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf6nu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0xg6"]
+border_color = Color(0.85958, 0.545326, 0.780122, 1)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("MainUI", "ButtonStorage", "TimedButtonStorage", "StatsStorage", "VitalStorage", "player", "strengthValueLabel", "intelligenceValueLabel", "charismaValueLabel", "hungerValueLabel", "thirstValueLabel", "socialValueLabel", "comfortValueLabel", "cleanlinessValueLabel", "mainButton")]
+script = ExtResource("1_vf5ql")
+MainUI = NodePath("UICenter/MainUI")
+ButtonStorage = NodePath("UICenter/MainUI/Actions Panel/Actions Storage")
+TimedButtonStorage = NodePath("UICenter/MainUI/Timed Events Panel/VBoxContainer/TimedButtonStorage")
+StatsStorage = NodePath("UICenter/MainUI/Stats Panel/HBoxContainer/Stats")
+VitalStorage = NodePath("UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals")
+TheBeginning = ExtResource("2_moft1")
+player = NodePath("Player")
+strengthValueLabel = NodePath("UICenter/MainUI/Stats Panel/HBoxContainer/Stats/StrengthValue")
+intelligenceValueLabel = NodePath("UICenter/MainUI/Stats Panel/HBoxContainer/Stats/IntelligenceValue")
+charismaValueLabel = NodePath("UICenter/MainUI/Stats Panel/HBoxContainer/Stats/CharismaValue")
+hungerValueLabel = NodePath("UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals/HungerValue")
+thirstValueLabel = NodePath("UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals/ThirstValue")
+socialValueLabel = NodePath("UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals/SocialValue")
+comfortValueLabel = NodePath("UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals/ComfortValue")
+cleanlinessValueLabel = NodePath("UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals/CleanlinessValue")
+limitedEventButton = ExtResource("3_6xad1")
+mainButton = NodePath("UICenter/MainUI/Develop")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 566.0
+offset_top = 71.0
+offset_right = 606.0
+offset_bottom = 94.0
+size_flags_horizontal = 4
+text = "0"
+
+[node name="BeingBorn" parent="." instance=ExtResource("2_moft1")]
+visible = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4_bavrt")
+
+[node name="UI Tabs Panel" type="Panel" parent="."]
+offset_top = 597.0
+offset_right = 1151.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tf6nu")
+
+[node name="ButtonBar" type="HBoxContainer" parent="UI Tabs Panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 50.0
+
+[node name="Game" type="Button" parent="UI Tabs Panel/ButtonBar" groups=["ButtonBar"]]
+layout_mode = 2
+text = "Main"
+
+[node name="Inventory" type="Button" parent="UI Tabs Panel/ButtonBar" groups=["ButtonBar"]]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Schooling" type="Button" parent="UI Tabs Panel/ButtonBar" groups=["ButtonBar"]]
+layout_mode = 2
+text = "Schooling"
+
+[node name="Development" type="Button" parent="UI Tabs Panel/ButtonBar" groups=["ButtonBar"]]
+layout_mode = 2
+text = "Development"
+
+[node name="Acheivements" type="Button" parent="UI Tabs Panel/ButtonBar" groups=["ButtonBar"]]
+layout_mode = 2
+text = "UI PH 1"
+
+[node name="UICenter" type="CenterContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 594.0
+
+[node name="MainUI" type="CanvasGroup" parent="UICenter"]
+
+[node name="Actions Panel" type="Panel" parent="UICenter/MainUI"]
+offset_left = 1.0
+offset_right = 251.0
+offset_bottom = 595.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q0xg6")
+
+[node name="Actions Storage" type="VBoxContainer" parent="UICenter/MainUI/Actions Panel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 594.0
+
+[node name="Vitals Panel" type="Panel" parent="UICenter/MainUI"]
+offset_left = 919.0
+offset_top = 309.0
+offset_right = 1150.0
+offset_bottom = 597.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UICenter/MainUI/Vitals Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 230.0
+offset_bottom = 319.0
+
+[node name="Vitals Names" type="VBoxContainer" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Vitals" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Vitals"
+
+[node name="Hunger" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Hunger"
+
+[node name="Thirst" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Thirst"
+
+[node name="Social" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Social"
+
+[node name="Comfort" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Comfort"
+
+[node name="Cleanliness" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals Names"]
+layout_mode = 2
+text = "Cleanliness
+"
+
+[node name="Vitals" type="VBoxContainer" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Vitals" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+
+[node name="HungerValue" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="ThirstValue" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="SocialValue" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="ComfortValue" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="CleanlinessValue" type="Label" parent="UICenter/MainUI/Vitals Panel/HBoxContainer2/Vitals"]
+layout_mode = 2
+text = "9999"
+
+[node name="Stats Panel" type="Panel" parent="UICenter/MainUI"]
+offset_left = 919.0
+offset_right = 1150.0
+offset_bottom = 306.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UICenter/MainUI/Stats Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 231.0
+offset_bottom = 308.0
+
+[node name="Stats Names" type="VBoxContainer" parent="UICenter/MainUI/Stats Panel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="StatsName" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Stats"
+
+[node name="StrengthName" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Strength"
+
+[node name="IntelligenceName" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Intelligence"
+
+[node name="CharismaName" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats Names"]
+layout_mode = 2
+text = "Charisma"
+
+[node name="Stats" type="VBoxContainer" parent="UICenter/MainUI/Stats Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="StatsValue" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="StrengthValue" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999"
+
+[node name="IntelligenceValue" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999"
+
+[node name="CharismaValue" type="Label" parent="UICenter/MainUI/Stats Panel/HBoxContainer/Stats"]
+layout_mode = 2
+text = "9999
+"
+
+[node name="Timed Events Panel" type="Panel" parent="UICenter/MainUI"]
+offset_left = 257.0
+offset_top = 385.0
+offset_right = 916.0
+offset_bottom = 588.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICenter/MainUI/Timed Events Panel"]
+layout_mode = 0
+offset_right = 657.0
+offset_bottom = 203.0
+
+[node name="Label" type="Label" parent="UICenter/MainUI/Timed Events Panel/VBoxContainer"]
+layout_mode = 2
+text = "LIMITED EVENTS SHOULD APPEAR HERE"
+horizontal_alignment = 1
+
+[node name="TimedButtonStorage" type="HBoxContainer" parent="UICenter/MainUI/Timed Events Panel/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Develop" type="Button" parent="UICenter/MainUI" node_paths=PackedStringArray("label", "player")]
+offset_left = 553.0
+offset_top = 300.0
+offset_right = 624.0
+offset_bottom = 331.0
+text = "Develop"
+script = ExtResource("5_at8re")
+label = NodePath("../../../Label")
+label_value = 6
+player = NodePath("../../../Player")
+
+[node name="Inventory" type="CanvasGroup" parent="UICenter"]
+
+[node name="CharacterSheet" parent="UICenter/Inventory" instance=ExtResource("6_bf0b5")]
+offset_left = 582.0
+offset_top = 264.0
+offset_right = 582.0
+offset_bottom = 264.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="UICenter/MainUI/Develop" to="UICenter/MainUI/Develop" method="_on_pressed"]

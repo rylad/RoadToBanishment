@@ -4,11 +4,15 @@
 
 [node name="CharacterSheet" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -17,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -31,8 +36,9 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Stats Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(231, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Stats Panel"]
 layout_mode = 1
@@ -91,6 +97,7 @@ text = "Character Name: DITTO"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer/HBoxContainer/PaperDoll"]
+custom_minimum_size = Vector2(462, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -99,6 +106,7 @@ layout_mode = 2
 texture = ExtResource("1_gctqx")
 
 [node name="Vitals Panel" type="Panel" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(231, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 

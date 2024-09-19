@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=3 uid="uid://boap4oie6axxf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kr4qu"]
+bg_color = Color(0.798223, 0.799628, 0.812548, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfdhw"]
+bg_color = Color(0.242206, 0.681519, 0.620871, 1)
+
+[node name="SchoolAgeUI" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.917
+offset_bottom = -0.216064
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kr4qu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.214
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.528015
+offset_right = -2.0
+offset_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(904, 395)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hfdhw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Stats" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Vitals" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.212
+anchor_bottom = 1.0
+offset_right = -0.224014
+metadata/_edit_use_anchors_ = true
+
+[node name="FriendsList" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/FriendsList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/FriendsList/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ScrollContainer")
+text = "Friends"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameIdeas" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameIdeas"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ScrollContainer")
+text = "Game Ideas"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
