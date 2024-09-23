@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bau1pdsnuv2f1"]
+[gd_scene load_steps=9 format=3 uid="uid://bau1pdsnuv2f1"]
 
 [ext_resource type="PackedScene" uid="uid://b5gmt6duwd8ox" path="res://Scenes/Blueprints/stats.tscn" id="1_raex6"]
+[ext_resource type="Texture2D" uid="uid://bp471q4mtq3ti" path="res://Assets/placeholder-icons.png" id="2_g23x1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixrws"]
+atlas = ExtResource("2_g23x1")
+region = Rect2(0.230812, 11.6803, 31.3816, 29.483)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg2sx"]
+atlas = ExtResource("2_g23x1")
+region = Rect2(47.3649, 14.235, 32.0516, 22.4473)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuuq2"]
+atlas = ExtResource("2_g23x1")
+region = Rect2(100.97, 12.6715, 24.5692, 19.3203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdslb"]
+atlas = ExtResource("2_g23x1")
+region = Rect2(0.571724, 53.3223, 26.8027, 19.432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg4g6"]
+atlas = ExtResource("2_g23x1")
+region = Rect2(95.2748, 44.1647, 27.0261, 24.5692)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahkjc"]
+atlas = ExtResource("2_g23x1")
+region = Rect2(49.8218, 42.9363, 30.8232, 24.9042)
 
 [node name="StatsPanel" type="Control"]
 layout_mode = 3
@@ -43,30 +68,48 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Stats" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
+[node name="Strength" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
+stat_name = "Strength"
+stat_icon = SubResource("AtlasTexture_ixrws")
+stat_value = 10.0
 
-[node name="Stats2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
+[node name="Dexterity" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
+stat_name = "Dexterity"
+stat_icon = SubResource("AtlasTexture_sg2sx")
+stat_value = 10.0
 
-[node name="Stats3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
+[node name="Constitution" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
+stat_name = "Constitution"
+stat_icon = SubResource("AtlasTexture_uuuq2")
+stat_value = 10.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Stats" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
+[node name="Intelligence" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
+stat_name = "Intelligence"
+stat_icon = SubResource("AtlasTexture_sdslb")
+stat_value = 10.0
 
-[node name="Stats2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
+[node name="Wisdom" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
+stat_name = "Wisdom"
+stat_icon = SubResource("AtlasTexture_mg4g6")
+stat_value = 10.0
 
-[node name="Stats3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
+[node name="Charisma" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
+stat_name = "Charisma"
+stat_icon = SubResource("AtlasTexture_ahkjc")
+stat_value = 10.0

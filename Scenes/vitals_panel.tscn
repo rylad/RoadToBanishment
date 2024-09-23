@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ttcoegt78ct"]
+[gd_scene load_steps=9 format=3 uid="uid://4ttcoegt78ct"]
 
 [ext_resource type="PackedScene" uid="uid://dqk8ph3wovw83" path="res://Scenes/Blueprints/vital.tscn" id="1_noleq"]
+[ext_resource type="Texture2D" uid="uid://cscgr63fy8771" path="res://Assets/vitals.png" id="2_nu4pn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu526"]
+atlas = ExtResource("2_nu4pn")
+region = Rect2(14.7289, 52.7283, 328.312, 224.961)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1dbj"]
+atlas = ExtResource("2_nu4pn")
+region = Rect2(381.243, 24.8156, 319.44, 246.235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5lyy"]
+atlas = ExtResource("2_nu4pn")
+region = Rect2(737.444, 728.909, 285.5, 202.046)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlbql"]
+atlas = ExtResource("2_nu4pn")
+region = Rect2(14.2054, 731.609, 327.959, 202.046)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_438gs"]
+atlas = ExtResource("2_nu4pn")
+region = Rect2(737.471, 393.408, 285.5, 216.687)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbu6i"]
+atlas = ExtResource("2_nu4pn")
+region = Rect2(431.474, 396.336, 238.648, 221.079)
 
 [node name="VitalsPanel" type="Control"]
 layout_mode = 3
@@ -44,30 +69,47 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Vital" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
+[node name="Hunger" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
 layout_mode = 2
 size_flags_vertical = 3
+vital_name = "Hunger"
+vital_icon = SubResource("AtlasTexture_pu526")
+vital_value = 50.0
 
-[node name="Vital2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
+[node name="Thirst" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
 layout_mode = 2
 size_flags_vertical = 3
+vital_name = "Thirst"
+vital_icon = SubResource("AtlasTexture_e1dbj")
+vital_value = 50.0
 
-[node name="Vital3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
+[node name="Cleanliness" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_noleq")]
 layout_mode = 2
 size_flags_vertical = 3
+vital_name = "Cleanliness"
+vital_icon = SubResource("AtlasTexture_x5lyy")
+vital_value = 20.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Vital" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
+[node name="Social" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
 layout_mode = 2
 size_flags_vertical = 3
+vital_name = "Social"
+vital_icon = SubResource("AtlasTexture_hlbql")
+vital_value = 80.0
 
-[node name="Vital2" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
+[node name="Comfort" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
 layout_mode = 2
 size_flags_vertical = 3
+vital_name = "Comfort"
+vital_icon = SubResource("AtlasTexture_438gs")
 
-[node name="Vital3" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
+[node name="Misc" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_noleq")]
 layout_mode = 2
 size_flags_vertical = 3
+vital_name = "Misc"
+vital_icon = SubResource("AtlasTexture_dbu6i")
+vital_value = 20.0

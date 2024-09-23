@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://boap4oie6axxf"]
+[gd_scene load_steps=13 format=3 uid="uid://boap4oie6axxf"]
+
+[ext_resource type="Texture2D" uid="uid://pyijj7vicknr" path="res://Assets/Space Camp.png" id="1_dg2qt"]
+[ext_resource type="PackedScene" uid="uid://bau1pdsnuv2f1" path="res://Scenes/stats_panel.tscn" id="1_hnfjc"]
+[ext_resource type="PackedScene" uid="uid://4ttcoegt78ct" path="res://Scenes/vitals_panel.tscn" id="2_ejh46"]
+[ext_resource type="Texture2D" uid="uid://ccbeepubmvc8b" path="res://Assets/School House.png" id="2_yujgf"]
+[ext_resource type="Texture2D" uid="uid://c5lyahqld7pe4" path="res://Assets/Home.png" id="3_o1c3k"]
+[ext_resource type="Texture2D" uid="uid://brorwuj4grq3a" path="res://Assets/Podium.png" id="4_4racq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kr4qu"]
 bg_color = Color(0.798223, 0.799628, 0.812548, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfdhw"]
 bg_color = Color(0.242206, 0.681519, 0.620871, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f445j"]
+atlas = ExtResource("1_dg2qt")
+region = Rect2(21.1691, 51.4929, 202.931, 172.608)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_velen"]
+atlas = ExtResource("2_yujgf")
+region = Rect2(40.1536, 0, 170.877, 218.617)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aqlc"]
+atlas = ExtResource("3_o1c3k")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75qre"]
+atlas = ExtResource("4_4racq")
+region = Rect2(43.5615, 5.77514, 144.617, 201.531)
 
 [node name="SchoolAgeUI" type="Control"]
 layout_mode = 3
@@ -14,7 +36,7 @@ offset_bottom = -0.216064
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="FullUI" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kr4qu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.214
@@ -34,25 +56,219 @@ offset_right = -2.0
 offset_bottom = 1.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
+[node name="Panel" type="Panel" parent="FullUI/VBoxContainer"]
 custom_minimum_size = Vector2(904, 395)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hfdhw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="Science Camp" type="Button" parent="FullUI/VBoxContainer/Panel"]
+layout_mode = 0
+anchor_left = 0.725664
+anchor_top = 0.0582278
+anchor_right = 0.912611
+anchor_bottom = 0.463291
+icon = SubResource("AtlasTexture_f445j")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="FullUI/VBoxContainer/Panel/Science Camp" groups=["SchoolAgeToggle"]]
+layout_mode = 0
+offset_left = -129.0
+offset_top = 1.0
+offset_right = -9.0
+offset_bottom = 158.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="School" type="Button" parent="FullUI/VBoxContainer/Panel"]
+layout_mode = 0
+anchor_left = 0.0608407
+anchor_top = 0.0582278
+anchor_right = 0.247788
+anchor_bottom = 0.463291
+icon = SubResource("AtlasTexture_velen")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel4" type="Panel" parent="FullUI/VBoxContainer/Panel/School" groups=["SchoolAgeToggle"]]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 7.0
+offset_right = 302.0
+offset_bottom = 164.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/School/Panel4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Home" type="Button" parent="FullUI/VBoxContainer/Panel"]
+layout_mode = 0
+anchor_left = 0.0619469
+anchor_top = 0.549367
+anchor_right = 0.248894
+anchor_bottom = 0.95443
+icon = SubResource("AtlasTexture_1aqlc")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel3" type="Panel" parent="FullUI/VBoxContainer/Panel/Home" groups=["SchoolAgeToggle"]]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 4.0
+offset_right = 297.0
+offset_bottom = 161.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Home/Panel3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Debate Club" type="Button" parent="FullUI/VBoxContainer/Panel"]
+layout_mode = 0
+anchor_left = 0.723451
+anchor_top = 0.529114
+anchor_right = 0.910398
+anchor_bottom = 0.934177
+offset_top = -1.52588e-05
+icon = SubResource("AtlasTexture_75qre")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="FullUI/VBoxContainer/Panel/Debate Club" groups=["SchoolAgeToggle"]]
+layout_mode = 0
+offset_left = -126.0
+offset_top = 3.0
+offset_right = -6.0
+offset_bottom = 160.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+layout_mode = 2
+text = "Lorem Ipsum"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullUI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-size_flags_vertical = 8
 
-[node name="Stats" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Stats" type="Panel" parent="FullUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Vitals" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="StatsPanel" parent="FullUI/VBoxContainer/HBoxContainer/Stats" instance=ExtResource("1_hnfjc")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 3
+
+[node name="Vitals" type="Panel" parent="FullUI/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VitalsPanel" parent="FullUI/VBoxContainer/HBoxContainer/Vitals" instance=ExtResource("2_ejh46")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
