@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://die5qcwfe3a1y"]
+
+[ext_resource type="Script" path="res://Scenes/Blueprints/stat_min.gd" id="1_v2gie"]
+
+[node name="StatMin" type="HBoxContainer" node_paths=PackedStringArray("stat_name_label", "stat_value_label")]
+anchors_preset = -1
+anchor_right = 0.101563
+anchor_bottom = 0.0354938
+offset_right = -117.0
+offset_bottom = -23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_v2gie")
+stat_name_label = NodePath("StatName")
+stat_value_label = NodePath("ValueLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="StatName" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "STATNAME"
+
+[node name="ValueLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "999"

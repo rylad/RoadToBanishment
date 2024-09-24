@@ -29,14 +29,18 @@ atlas = ExtResource("3_o1c3k")
 atlas = ExtResource("4_4racq")
 region = Rect2(43.5615, 5.77514, 144.617, 201.531)
 
-[node name="SchoolAgeUI" type="Control"]
+[node name="SchoolAgeUI" type="Control" node_paths=PackedStringArray("science_panel", "debate_panel", "school_panel", "home_panel")]
 layout_mode = 3
 anchor_right = 1.0
-anchor_bottom = 0.917
-offset_bottom = -0.216064
+anchor_bottom = 0.916667
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_76prf")
+science_panel = NodePath("FullUI/VBoxContainer/Panel/Science Camp/SciencePanel")
+debate_panel = NodePath("FullUI/VBoxContainer/Panel/Debate Club/DebatePanel")
+school_panel = NodePath("FullUI/VBoxContainer/Panel/School/SchoolPanel")
+home_panel = NodePath("FullUI/VBoxContainer/Panel/Home/HomePanel")
+metadata/_edit_use_anchors_ = true
 
 [node name="FullUI" type="Panel" parent="."]
 layout_mode = 1
@@ -46,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kr4qu")
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FullUI"]
 layout_mode = 1
@@ -63,7 +68,7 @@ custom_minimum_size = Vector2(904, 395)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hfdhw")
 
-[node name="Science Camp" type="Button" parent="FullUI/VBoxContainer/Panel"]
+[node name="Science Camp" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
 anchor_left = 0.725664
 anchor_top = 0.0582278
@@ -73,14 +78,14 @@ icon = SubResource("AtlasTexture_f445j")
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="FullUI/VBoxContainer/Panel/Science Camp" groups=["SchoolAgeToggle"]]
+[node name="SciencePanel" type="Panel" parent="FullUI/VBoxContainer/Panel/Science Camp" groups=["SchoolAgeOptionsPanels"]]
 layout_mode = 0
 offset_left = -129.0
 offset_top = 1.0
 offset_right = -9.0
 offset_bottom = 158.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -91,23 +96,23 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/Panel/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="School" type="Button" parent="FullUI/VBoxContainer/Panel"]
+[node name="School" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
 anchor_left = 0.0608407
 anchor_top = 0.0582278
@@ -118,14 +123,14 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel4" type="Panel" parent="FullUI/VBoxContainer/Panel/School" groups=["SchoolAgeToggle"]]
+[node name="SchoolPanel" type="Panel" parent="FullUI/VBoxContainer/Panel/School" groups=["SchoolAgeOptionsPanels"]]
 layout_mode = 0
 offset_left = 182.0
 offset_top = 7.0
 offset_right = 302.0
 offset_bottom = 164.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/School/Panel4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -136,23 +141,23 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/School/Panel4/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Home" type="Button" parent="FullUI/VBoxContainer/Panel"]
+[node name="Home" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
 anchor_left = 0.0619469
 anchor_top = 0.549367
@@ -163,14 +168,14 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel3" type="Panel" parent="FullUI/VBoxContainer/Panel/Home" groups=["SchoolAgeToggle"]]
+[node name="HomePanel" type="Panel" parent="FullUI/VBoxContainer/Panel/Home" groups=["SchoolAgeOptionsPanels"]]
 layout_mode = 0
 offset_left = 177.0
 offset_top = 4.0
 offset_right = 297.0
 offset_bottom = 161.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Home/Panel3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Home/HomePanel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -181,23 +186,23 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Home/Panel3/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Debate Club" type="Button" parent="FullUI/VBoxContainer/Panel"]
+[node name="Debate Club" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
 anchor_left = 0.723451
 anchor_top = 0.529114
@@ -208,14 +213,14 @@ icon = SubResource("AtlasTexture_75qre")
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel2" type="Panel" parent="FullUI/VBoxContainer/Panel/Debate Club" groups=["SchoolAgeToggle"]]
+[node name="DebatePanel" type="Panel" parent="FullUI/VBoxContainer/Panel/Debate Club" groups=["SchoolAgeOptionsPanels"]]
 layout_mode = 0
 offset_left = -126.0
 offset_top = 3.0
 offset_right = -6.0
 offset_bottom = 160.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -226,19 +231,19 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/Panel2/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
 layout_mode = 2
 text = "Lorem Ipsum"
 
@@ -291,22 +296,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/FriendsList/MarginContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 2
 focus_neighbor_bottom = NodePath("../ScrollContainer")
 text = "Friends"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Label")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="GameIdeas" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
@@ -319,21 +328,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 2
 focus_neighbor_bottom = NodePath("../ScrollContainer")
 text = "Game Ideas"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Label")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[connection signal="pressed" from="FullUI/VBoxContainer/Panel/Science Camp" to="." method="_on_button_pressed"]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfcl0rctf0ge2"]
+
+[ext_resource type="PackedScene" uid="uid://die5qcwfe3a1y" path="res://Scenes/Blueprints/stat_min.tscn" id="2_qghdo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltmgd"]
+bg_color = Color(0.881937, 0.881937, 0.881937, 1)
+
+[node name="StatMinimized" type="Control"]
+layout_mode = 3
+anchor_right = 0.228
+anchor_bottom = 0.101
+offset_right = 3.34399
+offset_bottom = 4.55199
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ltmgd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.043
+anchor_right = 1.0
+anchor_bottom = 1.057
+offset_top = 0.00999999
+offset_bottom = 0.00999451
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatMin" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_qghdo")]
+layout_mode = 2
+stat_name = "Str"
+stat_value = 20
+
+[node name="StatMin2" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_qghdo")]
+layout_mode = 2
+stat_name = "Dex"
+stat_value = 4
+
+[node name="StatMin3" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_qghdo")]
+layout_mode = 2
+stat_name = "Con"
+stat_value = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatMin" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_qghdo")]
+layout_mode = 2
+stat_name = "Int"
+stat_value = 3
+
+[node name="StatMin2" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_qghdo")]
+layout_mode = 2
+stat_name = "Wis"
+stat_value = 10
+
+[node name="StatMin3" parent="Panel/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_qghdo")]
+layout_mode = 2
+stat_name = "Cha"
+stat_value = 12

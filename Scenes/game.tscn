@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpk22i5b0mia1"]
+[gd_scene load_steps=10 format=3 uid="uid://dpk22i5b0mia1"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_vf5ql"]
 [ext_resource type="PackedScene" uid="uid://baisc8wbjssnu" path="res://Scenes/being_born.tscn" id="2_moft1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="4_bavrt"]
 [ext_resource type="Script" path="res://Scripts/Develop.gd" id="5_at8re"]
 [ext_resource type="PackedScene" uid="uid://dqoq8lb4wcikp" path="res://Scenes/character_sheet.tscn" id="6_bf0b5"]
+[ext_resource type="PackedScene" uid="uid://boap4oie6axxf" path="res://Scenes/school_age_ui.tscn" id="7_3gu4e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf6nu"]
 
@@ -251,5 +252,10 @@ offset_top = 264.0
 offset_right = 582.0
 offset_bottom = 264.0
 metadata/_edit_use_anchors_ = true
+
+[node name="SchoolAge" type="CanvasGroup" parent="UICenter"]
+
+[node name="SchoolAgeUI" parent="UICenter/SchoolAge" node_paths=PackedStringArray("player") instance=ExtResource("7_3gu4e")]
+player = NodePath("../../../Player")
 
 [connection signal="pressed" from="UICenter/MainUI/Develop" to="UICenter/MainUI/Develop" method="_on_pressed"]
