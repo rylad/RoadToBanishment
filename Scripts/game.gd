@@ -9,7 +9,7 @@ extends Node2D
 @onready var generation = ""
 
 @export var TheBeginning : PackedScene
-@export var player:CharacterBody2D
+var player = PlayerData
 
 @export_category("Stat Labels")
 @export var strengthValueLabel: Label
@@ -27,6 +27,7 @@ extends Node2D
 @export var mainButton:Button
 @export var generationPower:float
 
+
 func _ready():
 	SignalBus.generationChange.connect(generation_change)
 	SignalBus.update.connect(update_button)
@@ -36,6 +37,7 @@ func _ready():
 	SignalBus.summonDad.connect(limited_event)
 	
 	mainButton.text = "Thrust"
+	
 	
 func _physics_process(delta):
 	update_ui()

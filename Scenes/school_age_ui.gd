@@ -4,10 +4,11 @@ extends Control
 @export var debate_panel: Panel
 @export var school_panel: Panel
 @export var home_panel: Panel
-@export var player: Player
 @export var energy_tracker: ProgressBar
 @export var task_timer: Timer
 @export var task_progress_bar: ProgressBar
+
+
 var task_duration = 0
 
 enum Activities{
@@ -18,6 +19,7 @@ enum Activities{
 	HOME_SLEEP,
 	HOME_WORK,
 	HOME_DO_HOMEWORK,
+	HOME_PLAY_VIDEO_GAMES,
 	SCI_ATTEND,
 	SCI_BUILD_ROCKET,
 	SCI_GOOF_OFF,
@@ -30,14 +32,15 @@ enum Activities{
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_hide_menus("SchoolAgeOptionsPanels")
+	HideMenus._hide_menus("SchoolAgeOptionsPanels")
 	task_progress_bar.hide()
 	for each in get_tree().get_nodes_in_group("SchoolAgeActionButtons"):
 		print(each)
 		if each is Button:
 			each.connect("pressed", Callable(self, "_on_button_pressed").bind(each))
 	
-	for button in get_tree().get_nodes_in_group("SchoolAgeActiviesButtons"):
+	for button in get_tree().get_nodes_in_group("SchoolAgeActivitiesButtons"):
+		print(button.name)
 		if button is Button:
 			button.connect("pressed", Callable(self, "_task").bind(button))
 
@@ -50,15 +53,9 @@ func _physics_process(delta: float) -> void:
 		task_progress_bar.show()
 
 func _on_button_pressed(button):
-	_hide_menus("SchoolAgeOptionsPanels")
+	HideMenus._hide_menus("SchoolAgeOptionsPanels")
 	_show_children(button)
 
-func _hide_menus(groupName):
-	for each in get_tree().get_nodes_in_group(groupName):
-		if each.find_child:
-			each.hide()
-		else:
-			each.show()
 
 func _show_children(button):
 	for each in button.get_children():
@@ -66,42 +63,69 @@ func _show_children(button):
 		each.show()
 
 func _task(activity):
-	print(activity)
-	match activity:
-		Activities.SCHOOL_PAY_ATTENTION:
-			pass
-		Activities.SCHOOL_MEET_PEOPLE:
-			pass
-		Activities.SCHOOL_AFTER_SCHOOL_SPORTS:
-			pass
-		Activities.SCHOOL_BRAINSTORM_IDEAS:
-			pass
-		Activities.HOME_SLEEP:
-			pass
-		Activities.HOME_WORK:
-			pass
-		Activities.HOME_DO_HOMEWORK:
-			pass
-		Activities.SCI_ATTEND:
-			pass
-		Activities.SCI_BUILD_ROCKET:
-			pass
-		Activities.SCI_GOOF_OFF:
-			pass
-		Activities.SCI_GO_SWIMMING:
-			pass
-		Activities.DEBATE_PRACTICE:
-			pass
-		Activities.DEBATE_STUDY:
-			pass
-		Activities.DEBATE_PREPARE:
-			pass
-		Activities.DEBATE_COMPETE:
-			pass
+	print(activity.name)
+	if activity.name == "SCHOOL_PAY_ATTENTION":
+		var cost = 10
+		_task_timer_rules(cost, "Strength", 1)
+	elif activity.name == "SCHOOL_MEET_PEOPLE":
+		var cost = 15
+		_task_timer_rules(cost, "Charisma", 1)
+	elif activity.name == "SCHOOL_AFTER_SCHOOL_SPORTS":
+		var cost = 25
+		_task_timer_rules(cost, "Strength", 1)
+	elif activity.name == "SCHOOL_BRAINSTORM_IDEAS":
+		pass
+	elif activity.name == "HOME_SLEEP":
+		var cost = 60
+		_task_timer_rules(cost, "Energy", 100)
+	elif activity.name == "HOME_WORK":
+		var cost = 20
+		_task_timer_rules(cost, "Money", 100)
+	elif activity.name == "HOME_DO_HOMEWORK":
+		var cost = 20
+		_task_timer_rules(cost, "Intelligence", 1)
+	elif activity.name == "HOME_PLAY_VIDEO_GAMES":
+		pass
+	elif activity.name == "SCI_ATTEND":
+		var cost = 60
+		_task_timer_rules(cost, "Intelligence", 5)
+	elif activity.name == "SCI_BUILD_ROCKET":
+		pass
+	elif activity.name == "SCI_GOOF_OFF":
+		pass
+	elif activity.name == "SCI_GO_SWIMMING":
+		var cost = 30
+		_task_timer_rules(cost, "Strength", 1)
+	elif activity.name == "DEBATE_PRACTICE":
+		var cost = 30
+		_task_timer_rules(cost, "Wisdom", 1)
+	elif activity.name == "DEBATE_STUDY":
+		var cost = 30
+		_task_timer_rules(cost, "Intelligence", 1)
+	elif activity.name == "DEBATE_PREPARE":
+		var cost = 30
+		_task_timer_rules(cost, "Intelligence", 1)
+	elif activity.name == "DEBATE_COMPETE":
+		var cost = 30
+		_task_timer_rules(cost, "Charisma", 1)
+	else:
+			print("No activity found")
 	
-	task_duration = 10
+func _task_timer_rules(duration, increased_stat_name = null, increased_value = 0, decreased_stat_name = null, decreased_stat_value = 0):
+	task_duration = duration
 	task_timer.one_shot = true
 	task_timer.start(task_duration)
+
+	PlayerData.Energy -= duration
 	
+	if increased_stat_name != null:
+		PlayerData.update_stat(increased_stat_name, increased_value)
 	
-	
+	if decreased_stat_name != null:
+		PlayerData.update_stat(decreased_stat_name, decreased_stat_value)
+
+func _sleep(duration):
+	task_duration = duration
+	task_timer.one_shot = true
+	task_timer.start(task_duration)
+	PlayerData.update_stat("Energy", 100)

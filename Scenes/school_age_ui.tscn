@@ -99,19 +99,19 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCI_ATTEND" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Attend Science Camp"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCI_BUILD_ROCKET" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Build Rocket"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCI_GOOF_OFF" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Goof Off"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCI_GO_SWIMMING" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Go Swimming"
 
@@ -144,19 +144,19 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PayAttention" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCHOOL_PAY_ATTENTION" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Pay Attention"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCHOOL_MEET_PEOPLE" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Meet People"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCHOOL_AFTER_SCHOOL_SPORTS" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "After School Sports"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="SCHOOL_BRAINSTORM_IDEAS" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Brainstorm Ideas"
 
@@ -189,21 +189,21 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="HOME_SLEEP" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Sleep"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="HOME_WORK" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Work"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="HOME_DO_HOMEWORK" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Do Homework"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="HOME_PLAY_VIDEO_GAMES" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Play Video Games"
 
 [node name="Debate Club" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
@@ -234,19 +234,19 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="DEBATE_PRACTICE" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Practice"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="DEBATE_STUDY" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Study"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="DEBATE_PREPARE" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Prepare"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
+[node name="DEBATE_COMPETE" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Compete"
 
@@ -372,5 +372,3 @@ focus_neighbor_top = NodePath("../Label")
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[connection signal="pressed" from="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer/PayAttention" to="." method="_school_pay_attention"]

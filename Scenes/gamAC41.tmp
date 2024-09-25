@@ -57,7 +57,7 @@ offset_right = 1152.0
 offset_bottom = 50.0
 script = ExtResource("5_bokbg")
 
-[node name="Main" type="Button" parent="MainUI/ButtonBar" groups=["MainUIPanelButtons"]]
+[node name="Main" type="Button" parent="MainUI/ButtonBar" groups=["ButtonBar"]]
 layout_mode = 2
 text = "Main"
 
@@ -65,15 +65,15 @@ text = "Main"
 layout_mode = 2
 text = "Inventory"
 
-[node name="Schooling" type="Button" parent="MainUI/ButtonBar" groups=["MainUIPanelButtons"]]
+[node name="Schooling" type="Button" parent="MainUI/ButtonBar" groups=["ButtonBar"]]
 layout_mode = 2
 text = "Schooling"
 
-[node name="Development" type="Button" parent="MainUI/ButtonBar" groups=["MainUIPanelButtons"]]
+[node name="Development" type="Button" parent="MainUI/ButtonBar" groups=["ButtonBar"]]
 layout_mode = 2
 text = "Development"
 
-[node name="Acheivements" type="Button" parent="MainUI/ButtonBar" groups=["MainUIPanelButtons"]]
+[node name="Acheivements" type="Button" parent="MainUI/ButtonBar" groups=["ButtonBar"]]
 layout_mode = 2
 text = "UI PH 1"
 
@@ -243,6 +243,7 @@ label = NodePath("../../../Label")
 label_value = 6
 
 [node name="Inventory" type="CanvasGroup" parent="UICenter"]
+visible = false
 
 [node name="CharacterSheet" parent="UICenter/Inventory" instance=ExtResource("6_bf0b5")]
 offset_left = 582.0
@@ -252,7 +253,9 @@ offset_bottom = 264.0
 metadata/_edit_use_anchors_ = true
 
 [node name="SchoolAge" type="CanvasGroup" parent="UICenter"]
+visible = false
 
 [node name="SchoolAgeUI" parent="UICenter/SchoolAge" instance=ExtResource("7_3gu4e")]
+visible = false
 
 [connection signal="pressed" from="UICenter/MainUI/Develop" to="UICenter/MainUI/Develop" method="_on_pressed"]

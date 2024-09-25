@@ -2,7 +2,7 @@ extends Button
 
 @export var label:Label
 @export var label_value:int
-@export var player: CharacterBody2D
+var player = PlayerData
 var generation = 0
 
 
