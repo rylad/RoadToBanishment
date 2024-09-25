@@ -4,8 +4,12 @@ class_name Player
 
 ##Stats
 var Strength = 2
+var Dexterity = 2
+var Constitution = 2
 var Intelligence = 2
 var Charisma = 10
+var Wisdom = 2
+
 
 ##Vitals
 var Hunger = 30.0
@@ -13,9 +17,12 @@ var Thirst = 100.0
 var Social = 100.0
 var Comfort = 100.0
 var Cleanliness = 100.0
+var Energy = 100
+var MAX_ENERGY = Energy * (1+(Constitution/100)) * Generation_Bonus
 
 ##Misc
 var Money = 0.00
+@export var Generation_Bonus = 1
 
 ## Integer Representing Acension level
 """

@@ -83,6 +83,7 @@ offset_right = 1152.0
 offset_bottom = 594.0
 
 [node name="MainUI" type="CanvasGroup" parent="UICenter"]
+visible = false
 
 [node name="Actions Panel" type="Panel" parent="UICenter/MainUI"]
 offset_left = 1.0
@@ -245,6 +246,7 @@ label_value = 6
 player = NodePath("../../../Player")
 
 [node name="Inventory" type="CanvasGroup" parent="UICenter"]
+visible = false
 
 [node name="CharacterSheet" parent="UICenter/Inventory" instance=ExtResource("6_bf0b5")]
 offset_left = 582.0

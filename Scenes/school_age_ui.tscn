@@ -29,7 +29,7 @@ atlas = ExtResource("3_o1c3k")
 atlas = ExtResource("4_4racq")
 region = Rect2(43.5615, 5.77514, 144.617, 201.531)
 
-[node name="SchoolAgeUI" type="Control" node_paths=PackedStringArray("science_panel", "debate_panel", "school_panel", "home_panel")]
+[node name="SchoolAgeUI" type="Control" node_paths=PackedStringArray("science_panel", "debate_panel", "school_panel", "home_panel", "energy_tracker", "task_timer", "task_progress_bar")]
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 0.916667
@@ -40,6 +40,9 @@ science_panel = NodePath("FullUI/VBoxContainer/Panel/Science Camp/SciencePanel")
 debate_panel = NodePath("FullUI/VBoxContainer/Panel/Debate Club/DebatePanel")
 school_panel = NodePath("FullUI/VBoxContainer/Panel/School/SchoolPanel")
 home_panel = NodePath("FullUI/VBoxContainer/Panel/Home/HomePanel")
+energy_tracker = NodePath("FullUI/VBoxContainer/Panel/Energy")
+task_timer = NodePath("FullUI/CanvasLayer/TaskTimer")
+task_progress_bar = NodePath("FullUI/CanvasLayer/TaskProgress")
 metadata/_edit_use_anchors_ = true
 
 [node name="FullUI" type="Panel" parent="."]
@@ -96,21 +99,21 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Attend Science Camp"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Build Rocket"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Goof Off"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Science Camp/SciencePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Go Swimming"
 
 [node name="School" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
@@ -141,21 +144,21 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
+[node name="PayAttention" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Pay Attention"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Meet People"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "After School Sports"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Brainstorm Ideas"
 
 [node name="Home" type="Button" parent="FullUI/VBoxContainer/Panel" groups=["SchoolAgeActionButtons"]]
 layout_mode = 0
@@ -186,19 +189,19 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Sleep"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Work"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Do Homework"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Home/HomePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
 text = "Lorem Ipsum"
 
@@ -231,21 +234,32 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
+[node name="Button" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Practice"
 
-[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
+[node name="Button2" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Study"
 
-[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
+[node name="Button3" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Prepare"
 
-[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer"]
+[node name="Button4" type="Button" parent="FullUI/VBoxContainer/Panel/Debate Club/DebatePanel/VBoxContainer" groups=["SchoolAgeActivitiesButtons"]]
 layout_mode = 2
-text = "Lorem Ipsum"
+text = "Compete"
+
+[node name="Energy" type="ProgressBar" parent="FullUI/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.931646
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 10.0
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FullUI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -275,6 +289,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
 offset_bottom = 0.0
+size_flags_horizontal = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FullUI"]
+
+[node name="TaskTimer" type="Timer" parent="FullUI/CanvasLayer"]
+
+[node name="TaskProgress" type="ProgressBar" parent="FullUI/CanvasLayer"]
+offset_left = 250.0
+offset_top = 186.0
+offset_right = 1150.0
+offset_bottom = 213.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -347,3 +372,5 @@ focus_neighbor_top = NodePath("../Label")
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="pressed" from="FullUI/VBoxContainer/Panel/School/SchoolPanel/VBoxContainer/PayAttention" to="." method="_school_pay_attention"]
