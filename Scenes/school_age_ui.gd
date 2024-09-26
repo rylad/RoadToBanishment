@@ -7,7 +7,12 @@ extends Control
 @export var energy_tracker: ProgressBar
 @export var task_timer: Timer
 @export var task_progress_bar: ProgressBar
-
+@export var debug_game_idea_progress_bar: ProgressBar
+@export var debug_making_friends_progress_bar: ProgressBar
+@export var friend_bp: PackedScene
+@export var game_bp: PackedScene
+@export var friend_container: VBoxContainer
+@export var game_container: VBoxContainer
 
 var task_duration = 0
 
@@ -51,6 +56,20 @@ func _physics_process(delta: float) -> void:
 		task_progress_bar.hide()
 	else:
 		task_progress_bar.show()
+	
+	debug_making_friends_progress_bar.value = PlayerData.Making_Friends
+	debug_game_idea_progress_bar.value = PlayerData.Game_Idea
+	
+	if PlayerData.Game_Idea >= 100:
+		PlayerData.Game_Idea = 0
+		var new_game = game_bp.instantiate()
+		game_container.add_child(new_game)
+		
+	if PlayerData.Making_Friends >= 100:
+		PlayerData.Making_Friends = 0
+		var new_friend = friend_bp.instantiate()
+		friend_container.add_child(new_friend)
+		
 
 func _on_button_pressed(button):
 	HideMenus._hide_menus("SchoolAgeOptionsPanels")
@@ -123,9 +142,20 @@ func _task_timer_rules(duration, increased_stat_name = null, increased_value = 0
 	
 	if decreased_stat_name != null:
 		PlayerData.update_stat(decreased_stat_name, decreased_stat_value)
+	
+	_hidden_increases(40)
+
+
+func _hidden_increases(increased_stat_value):
+	PlayerData.update_stat("Making_Friends", increased_stat_value)
+	PlayerData.update_stat("Game_Idea", increased_stat_value)
 
 func _sleep(duration):
 	task_duration = duration
 	task_timer.one_shot = true
 	task_timer.start(task_duration)
 	PlayerData.update_stat("Energy", 100)
+	
+
+func _add_new_item(name, location):
+	pass

@@ -1,7 +1,5 @@
 extends Node
 
-class_name Player
-
 ##Globals
 @export var Generation_Bonus = 1
 
@@ -25,6 +23,8 @@ var MAX_ENERGY = Energy * (1+(Constitution/100)) * Generation_Bonus
 
 ##Misc
 var Money = 0.00
+var Game_Idea = 0.00
+var Making_Friends = 0.00
 
 
 ## Integer Representing Acension level

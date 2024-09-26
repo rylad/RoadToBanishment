@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnrh5v32s5cvq"]
+[gd_scene load_steps=7 format=3 uid="uid://cnrh5v32s5cvq"]
 
 [ext_resource type="Script" path="res://Scenes/Blueprints/friend.gd" id="1_0vrj8"]
 [ext_resource type="Texture2D" uid="uid://dgcng8vbsppb0" path="res://icon.svg" id="1_vtwhq"]
@@ -9,21 +9,26 @@ bg_color = Color(0.881937, 0.881937, 0.881937, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjgiq"]
 
-[node name="Friend" type="Control" node_paths=PackedStringArray("name_label")]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pemwn"]
+
+[node name="Friend" type="Control" node_paths=PackedStringArray("name_label", "key_friend_icon")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -611.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 script = ExtResource("1_0vrj8")
 name_label = NodePath("Panel/VBoxContainer/Panel/MarginContainer/FriendName")
+key_friend_icon = NodePath("Panel/VBoxContainer/Panel2/HBoxContainer/MarginContainer3/KeyFriend")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.101852
+anchor_bottom = 1.78378
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -88,3 +93,18 @@ size_flags_horizontal = 3
 
 [node name="StatMinimized" parent="Panel/VBoxContainer/Panel2/HBoxContainer/MarginContainer2" instance=ExtResource("2_ht1nf")]
 layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/VBoxContainer/Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="KeyFriend" type="TextureRect" parent="Panel/VBoxContainer/Panel2/HBoxContainer/MarginContainer3"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_pemwn")
+expand_mode = 1

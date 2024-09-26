@@ -73,21 +73,18 @@ layout_mode = 2
 size_flags_vertical = 3
 stat_name = "Strength"
 stat_icon = SubResource("AtlasTexture_ixrws")
-stat_value = 10.0
 
 [node name="Dexterity" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
 stat_name = "Dexterity"
 stat_icon = SubResource("AtlasTexture_sg2sx")
-stat_value = 10.0
 
 [node name="Constitution" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
 stat_name = "Constitution"
 stat_icon = SubResource("AtlasTexture_uuuq2")
-stat_value = 10.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -98,18 +95,15 @@ layout_mode = 2
 size_flags_vertical = 3
 stat_name = "Intelligence"
 stat_icon = SubResource("AtlasTexture_sdslb")
-stat_value = 10.0
 
 [node name="Wisdom" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
 stat_name = "Wisdom"
 stat_icon = SubResource("AtlasTexture_mg4g6")
-stat_value = 10.0
 
 [node name="Charisma" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("1_raex6")]
 layout_mode = 2
 size_flags_vertical = 3
 stat_name = "Charisma"
 stat_icon = SubResource("AtlasTexture_ahkjc")
-stat_value = 10.0

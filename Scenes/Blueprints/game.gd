@@ -1,9 +1,9 @@
 extends Control
 
 var game_name: String
-var genre: String
 var quality: String
 @export var name_label: Label
+@export var genre_label: Label
 @export var quality_texture: TextureRect
 
 enum qualities {
@@ -58,9 +58,14 @@ var genres = [
 func _ready() -> void:
 	var name_choice = game_names.pick_random()
 	var quality = qualities.values().pick_random()
+	var genre_choice = genres.pick_random()
 	print(quality)
-	name_label.text = game_names[name_choice]
+	name_label.text = name_choice
+	genre_label.text = genre_choice
 	if quality == qualities.AMAZING:
 		quality_texture.modulate = Color("YELLOW")
 	else:
 		quality_texture.modulate = Color("BROWN")
+
+func _new_game():
+	PlayerData.Game_Idea = 0

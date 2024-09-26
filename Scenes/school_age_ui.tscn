@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://boap4oie6axxf"]
+[gd_scene load_steps=16 format=3 uid="uid://boap4oie6axxf"]
 
 [ext_resource type="Script" path="res://Scenes/school_age_ui.gd" id="1_76prf"]
 [ext_resource type="Texture2D" uid="uid://pyijj7vicknr" path="res://Assets/Space Camp.png" id="1_dg2qt"]
 [ext_resource type="PackedScene" uid="uid://bau1pdsnuv2f1" path="res://Scenes/stats_panel.tscn" id="1_hnfjc"]
+[ext_resource type="PackedScene" uid="uid://cnrh5v32s5cvq" path="res://Scenes/Blueprints/friend.tscn" id="2_bj2ec"]
 [ext_resource type="PackedScene" uid="uid://4ttcoegt78ct" path="res://Scenes/vitals_panel.tscn" id="2_ejh46"]
 [ext_resource type="Texture2D" uid="uid://ccbeepubmvc8b" path="res://Assets/School House.png" id="2_yujgf"]
 [ext_resource type="Texture2D" uid="uid://c5lyahqld7pe4" path="res://Assets/Home.png" id="3_o1c3k"]
+[ext_resource type="PackedScene" uid="uid://bmtg2ijdywjwx" path="res://Scenes/Blueprints/game.tscn" id="3_wgfxy"]
 [ext_resource type="Texture2D" uid="uid://brorwuj4grq3a" path="res://Assets/Podium.png" id="4_4racq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kr4qu"]
@@ -29,7 +31,7 @@ atlas = ExtResource("3_o1c3k")
 atlas = ExtResource("4_4racq")
 region = Rect2(43.5615, 5.77514, 144.617, 201.531)
 
-[node name="SchoolAgeUI" type="Control" node_paths=PackedStringArray("science_panel", "debate_panel", "school_panel", "home_panel", "energy_tracker", "task_timer", "task_progress_bar")]
+[node name="SchoolAgeUI" type="Control" node_paths=PackedStringArray("science_panel", "debate_panel", "school_panel", "home_panel", "energy_tracker", "task_timer", "task_progress_bar", "debug_game_idea_progress_bar", "debug_making_friends_progress_bar", "friend_container", "game_container")]
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 0.916667
@@ -41,8 +43,14 @@ debate_panel = NodePath("FullUI/VBoxContainer/Panel/Debate Club/DebatePanel")
 school_panel = NodePath("FullUI/VBoxContainer/Panel/School/SchoolPanel")
 home_panel = NodePath("FullUI/VBoxContainer/Panel/Home/HomePanel")
 energy_tracker = NodePath("FullUI/VBoxContainer/Panel/Energy")
-task_timer = NodePath("FullUI/CanvasLayer/TaskTimer")
-task_progress_bar = NodePath("FullUI/CanvasLayer/TaskProgress")
+task_timer = NodePath("CanvasLayer/TaskTimer")
+task_progress_bar = NodePath("CanvasLayer/TaskProgress")
+debug_game_idea_progress_bar = NodePath("CanvasLayer/DebugPanel/VBoxContainer/GameIdeaProgress")
+debug_making_friends_progress_bar = NodePath("CanvasLayer/DebugPanel/VBoxContainer/FriendProgress")
+friend_bp = ExtResource("2_bj2ec")
+game_bp = ExtResource("3_wgfxy")
+friend_container = NodePath("VBoxContainer/FriendsList/MarginContainer/VBoxContainer/ScrollContainer/FriendContainer")
+game_container = NodePath("VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer/GameContainer")
 metadata/_edit_use_anchors_ = true
 
 [node name="FullUI" type="Panel" parent="."]
@@ -291,17 +299,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 size_flags_horizontal = 3
 
-[node name="CanvasLayer" type="CanvasLayer" parent="FullUI"]
-
-[node name="TaskTimer" type="Timer" parent="FullUI/CanvasLayer"]
-
-[node name="TaskProgress" type="ProgressBar" parent="FullUI/CanvasLayer"]
-offset_left = 250.0
-offset_top = 186.0
-offset_right = 1150.0
-offset_bottom = 213.0
-size_flags_horizontal = 3
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -327,8 +324,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../ScrollContainer")
 text = "Friends"
 
@@ -337,7 +335,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Label")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="FriendContainer" type="VBoxContainer" parent="VBoxContainer/FriendsList/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -360,7 +358,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../ScrollContainer")
 text = "Game Ideas"
 
@@ -369,6 +367,45 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Label")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="GameContainer" type="VBoxContainer" parent="VBoxContainer/GameIdeas/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TaskTimer" type="Timer" parent="CanvasLayer"]
+
+[node name="TaskProgress" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 186.0
+offset_right = 1150.0
+offset_bottom = 213.0
+size_flags_horizontal = 3
+
+[node name="DebugPanel" type="Panel" parent="CanvasLayer"]
+offset_left = 612.0
+offset_top = 222.0
+offset_right = 776.0
+offset_bottom = 335.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Idea Progress" type="Label" parent="CanvasLayer/DebugPanel/VBoxContainer"]
+layout_mode = 2
+text = "Game Idea Progress"
+
+[node name="GameIdeaProgress" type="ProgressBar" parent="CanvasLayer/DebugPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Making Friends" type="Label" parent="CanvasLayer/DebugPanel/VBoxContainer"]
+layout_mode = 2
+text = "Making Friends"
+
+[node name="FriendProgress" type="ProgressBar" parent="CanvasLayer/DebugPanel/VBoxContainer"]
+layout_mode = 2
