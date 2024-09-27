@@ -14,7 +14,10 @@ extends Control
 @export var friend_container: VBoxContainer
 @export var game_container: VBoxContainer
 
+@export var debug_multi = 100
+
 var task_duration = 0
+var cost = 0
 
 enum Activities{
 	SCHOOL_PAY_ATTENTION,
@@ -50,25 +53,34 @@ func _ready() -> void:
 			button.connect("pressed", Callable(self, "_task").bind(button))
 
 func _physics_process(delta: float) -> void:
+	## This controls the progress bar during actions
 	var remaining_time = task_timer.time_left
 	task_progress_bar.value = 100 * ((task_duration - remaining_time) / task_duration)
 	if remaining_time <= 0:
 		task_progress_bar.hide()
+		for button in get_tree().get_nodes_in_group("SchoolAgeActivitiesButtons"):
+			button.disabled = false
 	else:
 		task_progress_bar.show()
+		for button in get_tree().get_nodes_in_group("SchoolAgeActivitiesButtons"):
+			button.disabled = true
 	
 	debug_making_friends_progress_bar.value = PlayerData.Making_Friends
 	debug_game_idea_progress_bar.value = PlayerData.Game_Idea
 	
+	## This controls the hidden values of games and friend creation	
 	if PlayerData.Game_Idea >= 100:
 		PlayerData.Game_Idea = 0
 		var new_game = game_bp.instantiate()
 		game_container.add_child(new_game)
-		
+	
 	if PlayerData.Making_Friends >= 100:
 		PlayerData.Making_Friends = 0
 		var new_friend = friend_bp.instantiate()
 		friend_container.add_child(new_friend)
+		
+	energy_tracker.value = PlayerData.Energy
+	energy_tracker.max_value = PlayerData.MAX_ENERGY
 		
 
 func _on_button_pressed(button):
@@ -84,66 +96,82 @@ func _show_children(button):
 func _task(activity):
 	print(activity.name)
 	if activity.name == "SCHOOL_PAY_ATTENTION":
-		var cost = 10
-		_task_timer_rules(cost, "Strength", 1)
+		cost = 10
+		_task_timer_rules(cost)
+		PlayerData.Intelligence += 1
 	elif activity.name == "SCHOOL_MEET_PEOPLE":
-		var cost = 15
-		_task_timer_rules(cost, "Charisma", 1)
+		cost = 15
+		_task_timer_rules(cost)
+		PlayerData.Charisma += 1
+		PlayerData.Making_Friends += 25
 	elif activity.name == "SCHOOL_AFTER_SCHOOL_SPORTS":
-		var cost = 25
-		_task_timer_rules(cost, "Strength", 1)
+		cost = 25
+		PlayerData.Making_Friends += 10
+		_task_timer_rules(cost)
+		PlayerData.Strength += .5
+		PlayerData.Dexterity += 1
 	elif activity.name == "SCHOOL_BRAINSTORM_IDEAS":
-		pass
+		cost = 30
+		_task_timer_rules(cost)
+		PlayerData.Game_Idea += 40
 	elif activity.name == "HOME_SLEEP":
-		var cost = 60
-		_task_timer_rules(cost, "Energy", 100)
+		cost = 60
+		_task_timer_rules(cost)
+		PlayerData.Energy = 100
 	elif activity.name == "HOME_WORK":
-		var cost = 20
-		_task_timer_rules(cost, "Money", 100)
+		cost = 20
+		_task_timer_rules(cost)
+		PlayerData.Money += 100
+		PlayerData.Making_Friends += 20
 	elif activity.name == "HOME_DO_HOMEWORK":
-		var cost = 20
-		_task_timer_rules(cost, "Intelligence", 1)
+		cost = 20
+		_task_timer_rules(cost)
+		PlayerData.Intelligence += 1
 	elif activity.name == "HOME_PLAY_VIDEO_GAMES":
-		pass
+		PlayerData.Game_Idea += 10
 	elif activity.name == "SCI_ATTEND":
-		var cost = 60
-		_task_timer_rules(cost, "Intelligence", 5)
+		cost = 60
+		_task_timer_rules(cost)
+		PlayerData.Intelligence += 5
 	elif activity.name == "SCI_BUILD_ROCKET":
-		pass
+		cost = 60
+		_task_timer_rules(cost)
+		PlayerData.Making_Friends += 40
 	elif activity.name == "SCI_GOOF_OFF":
-		pass
+		cost = 30
+		PlayerData.Making_Friends += 25
+		PlayerData.Game_Idea += 25
 	elif activity.name == "SCI_GO_SWIMMING":
-		var cost = 30
-		_task_timer_rules(cost, "Strength", 1)
+		cost = 30
+		_task_timer_rules(cost)
+		PlayerData.Strength += 1
 	elif activity.name == "DEBATE_PRACTICE":
-		var cost = 30
-		_task_timer_rules(cost, "Wisdom", 1)
+		cost = 30
+		_task_timer_rules(cost)
+		PlayerData.Wisdom += 1
 	elif activity.name == "DEBATE_STUDY":
-		var cost = 30
-		_task_timer_rules(cost, "Intelligence", 1)
+		cost = 30
+		_task_timer_rules(cost)
+		PlayerData.Intelligence += 1
 	elif activity.name == "DEBATE_PREPARE":
-		var cost = 30
-		_task_timer_rules(cost, "Intelligence", 1)
+		cost = 30
+		_task_timer_rules(cost)
+		PlayerData.Intelligence += 1
 	elif activity.name == "DEBATE_COMPETE":
-		var cost = 30
-		_task_timer_rules(cost, "Charisma", 1)
+		cost = 30
+		_task_timer_rules(cost)
+		PlayerData.Charisma += 1
 	else:
 			print("No activity found")
 	
-func _task_timer_rules(duration, increased_stat_name = null, increased_value = 0, decreased_stat_name = null, decreased_stat_value = 0):
-	task_duration = duration
+func _task_timer_rules(duration):
+	duration = duration * (100-PlayerData.Efficiency_Multiplier)
+	task_duration = duration / debug_multi
 	task_timer.one_shot = true
 	task_timer.start(task_duration)
-
 	PlayerData.Energy -= duration
-	
-	if increased_stat_name != null:
-		PlayerData.update_stat(increased_stat_name, increased_value)
-	
-	if decreased_stat_name != null:
-		PlayerData.update_stat(decreased_stat_name, decreased_stat_value)
-	
 	_hidden_increases(40)
+	
 
 
 func _hidden_increases(increased_stat_value):
@@ -151,11 +179,8 @@ func _hidden_increases(increased_stat_value):
 	PlayerData.update_stat("Game_Idea", increased_stat_value)
 
 func _sleep(duration):
-	task_duration = duration
+	task_duration = duration / debug_multi
 	task_timer.one_shot = true
 	task_timer.start(task_duration)
 	PlayerData.update_stat("Energy", 100)
 	
-
-func _add_new_item(name, location):
-	pass

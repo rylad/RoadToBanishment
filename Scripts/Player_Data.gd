@@ -3,6 +3,7 @@ extends Node
 ##Globals
 @export var Generation_Bonus = 1
 
+
 ##Stats
 var Strength = 2
 var Dexterity = 2
@@ -25,6 +26,8 @@ var MAX_ENERGY = Energy * (1+(Constitution/100)) * Generation_Bonus
 var Money = 0.00
 var Game_Idea = 0.00
 var Making_Friends = 0.00
+
+var Efficiency_Multiplier = (Dexterity * Generation_Bonus) / 100
 
 
 ## Integer Representing Acension level

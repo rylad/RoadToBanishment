@@ -9,12 +9,14 @@ bg_color = Color(0.881937, 0.881937, 0.881937, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjgiq"]
 
 [node name="Game" type="Control" node_paths=PackedStringArray("name_label", "genre_label", "quality_texture")]
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 3
-anchor_right = 0.211
-anchor_bottom = 0.1
-offset_right = -0.0720062
-offset_bottom = 0.199997
-size_flags_vertical = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -1.0
+offset_bottom = 68.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 script = ExtResource("1_e2og7")
 name_label = NodePath("Panel/VBoxContainer/Panel/MarginContainer/GameName")
 genre_label = NodePath("Panel/VBoxContainer/Panel2/HBoxContainer/MarginContainer2/Genre")
@@ -42,6 +44,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_o35bk")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Panel"]
@@ -61,6 +64,7 @@ text = "GAMENAME"
 [node name="Panel2" type="Panel" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 37)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_vjgiq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Panel2"]
